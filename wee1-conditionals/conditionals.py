@@ -10,15 +10,25 @@
 #     print("Grade D")
 # else:
 #     print("Grade F")
-def is_even(number):
-    return True if number % 2 == 0 else False
+# def is_even(number):
+#     return True if number % 2 == 0 else False
+#
+# def main():
+#     number = int(input("Enter Number: "))
+#     if is_even(number):
+#         print("Even Number")
+#     else:
+#         print("Odd Number")
+#
+# if __name__ == "__main__":
+#     main()
 
-def main():
-    number = int(input("Enter Number: "))
-    if is_even(number):
-        print("Even Number")
-    else:
-        print("Odd Number")
 
-if __name__ == "__main__":
-    main()
+name = input("Enter name to decide his house in hogwarts: ").lower()
+match name:
+    case "harry" | "neville" | "seamus":
+        print("Griffindorr")
+    case "blaise | theodore":
+        print("Slythrin")
+    case _:
+        print("Which House: ")
