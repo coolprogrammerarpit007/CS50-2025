@@ -44,14 +44,6 @@
 # print(f"Output: {user_input}")
 
 # Vanitty Plates
-def is_middle_digit(series):
-    list1 = ''
-    list2 = ''
-    for digit in series:
-        if digit.isdigit() and list1 == '' and list2 == '':
-            index = series.index(digit)
-            list1 = series[0:index+1]
-            list2 = series[index+1:]
 
 
 # Problem 4
@@ -67,31 +59,22 @@ def main():
 def is_valid(s):
     is_valid_plate = True
     digits = []
+
+    # to check if plate starts with 2 letters and min of 2 and max of 6 chars.
     if 2 <= len(s) <= 6 and s[:2].isalpha():
-        if s[-1].isalpha():
-            for char in s:
-                if char.isdigit():
+        # to check if digit is in middle of char
+        for index,letter in enumerate(s):
+            if letter.isdigit():
+                if  (index < len(s) - 1) and (letter[(index + 1)].isalpha()):
+                    is_valid_plate = False
+                if (index > 0 and (letter[index - 1]).isalpha()) and (index < len(s) - 1) and (letter[(index + 1)].isalpha()):
                     is_valid_plate = False
                 else:
-                    continue
-        else:
-
-            # to check if digit is in middle
-            if is_middle_digit(s) and s[-1].isdigit():
+                    pass
+            else:
                 pass
 
-            # to check if first digit is 0
-            for char in s:
-                if char.isdigit():
-                    digits.append(char)
-                else:
-                    print()
 
-            if digits[0] == "0":
-                is_valid_plate = False
-
-    else:
-        is_valid_plate = False
 
     return is_valid_plate
 
